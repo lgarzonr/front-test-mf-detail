@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot, Container } from "react-dom/client";
-import DetailView from "./views/detail/DetailView";
+import DetailView from "./detail/DetailView";
 
 const mount = (rootElement: Container) => {
   const root = createRoot(rootElement);
