@@ -2,7 +2,7 @@ import React from "react";
 import DetailViewModel from "./DetailViewModel";
 import "./DetailView.scss";
 import Chip from "@mui/material/Chip";
-import { formattedNumber } from "../../utils/format";
+import { formattedNumber } from "../utils/format";
 
 const DetailView = () => {
   const { resultItem } = DetailViewModel();

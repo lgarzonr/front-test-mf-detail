@@ -1,7 +1,6 @@
 import httpClient from "../../utils/httpClient";
 
-
-const BASE_SERVICE_URL = "https://api.mercadolibre.com/items";
+const BASE_SERVICE_URL = "http://localhost:3000/api/items";
 
 interface Item {
   id: string;
@@ -24,41 +23,11 @@ export interface ItemsByIdResponse {
 
 export const getItemById = async (id: string) => {
   try {
-    const response: {
-      id: string;
-      title: string;
-      currency_id: string;
-      price: number;
-      thumbnail: string;
-      condition: string;
-      shipping: {
-        free_shipping: boolean;
-      };
-      initial_quantity: number;
-    } = await httpClient.get(`${BASE_SERVICE_URL}/${id}`);
-
-    const responseDescription: { plain_text: string } = await httpClient.get(
-      `${BASE_SERVICE_URL}/${id}/description`
+    const { data }: { data: ItemsByIdResponse } = await httpClient.get(
+      `${BASE_SERVICE_URL}/${id}`
     );
 
-    const result: ItemsByIdResponse = {
-      item: {
-        id: response.id,
-        title: response.title,
-        price: {
-          currency: response.currency_id,
-          amount: response.price,
-          decimals: 0, // Add the missing 'decimals' property
-        },
-        picture: response.thumbnail,
-        condition: response.condition,
-        free_shipping: response.shipping.free_shipping,
-        description: responseDescription.plain_text,
-        sold_quantity: response.initial_quantity,
-      },
-    };
-
-    return { result, error: false };
+    return { result: data, error: false };
   } catch (error) {
     return { error };
   }

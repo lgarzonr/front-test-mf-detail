@@ -6,7 +6,7 @@ const mockGetItemById = jest.fn().mockResolvedValue({
     item: ["Root Category"],
   },
 });
-jest.mock("../../services/items/itemsModel", () => ({
+jest.mock("../services/items/itemsModel", () => ({
   getItemById: (...p: any) => mockGetItemById(...p),
 }));
 

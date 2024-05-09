@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ItemsByIdResponse,
   getItemById,
-} from "../../services/items/itemsModel";
+} from "../services/items/itemsModel";
 
 const DetailViewModel = () => {
   const [resultItem, setResultItem] = useState<ItemsByIdResponse["item"]>();
